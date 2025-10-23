@@ -50,7 +50,7 @@ public class Main implements Plugin<Project> {
 
 		try {
 			String content = Files.readString(javafPath);
-			String compiled = content.replace("const ", "final ");
+			String compiled = content.replace("const", "final");
 			Files.writeString(javaPath, compiled);
 		} catch (IOException e) {
 			throw new RuntimeException("Error compiling file: " + javafPath, e);
