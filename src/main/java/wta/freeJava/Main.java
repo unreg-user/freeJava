@@ -6,6 +6,7 @@ import org.gradle.api.file.SourceDirectorySet;
 import org.gradle.api.tasks.SourceSet;
 import org.gradle.api.tasks.SourceSetContainer;
 import org.jetbrains.annotations.ApiStatus;
+import wta.freeJava.system.codeStructure.JavafFile;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -50,6 +51,7 @@ public class Main implements Plugin<Project> {
 
 		try {
 			String content = Files.readString(javafPath);
+			JavafFile.compileFor(content);
 			//String compiled = content.replace("const", "final");
 			//Files.writeString(javaPath, compiled);
 		} catch (IOException e) {
