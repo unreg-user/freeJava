@@ -23,7 +23,7 @@ public class Main implements Plugin<Project> {
 		// Регистрируем задачу
 		project.getTasks().register("compileJavaf", task -> {
 			task.doLast(task2 -> {
-				SourceDirectorySet javaSrcDirs = mainSourceSet.getJava();
+				SourceDirectorySet javaSrcDirs = mainSourceSet.getAllSource();
 				for (File srcDir : javaSrcDirs) {
 					if (!srcDir.exists()) continue;
 					try (Stream<Path> paths = Files.walk(srcDir.toPath())) {
@@ -50,8 +50,8 @@ public class Main implements Plugin<Project> {
 
 		try {
 			String content = Files.readString(javafPath);
-			String compiled = content.replace("const", "final");
-			Files.writeString(javaPath, compiled);
+			//String compiled = content.replace("const", "final");
+			//Files.writeString(javaPath, compiled);
 		} catch (IOException e) {
 			throw new RuntimeException("Error compiling file: " + javafPath, e);
 		}
